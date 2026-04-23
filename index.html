@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>Birthday Terminal ❤️</title>
+<title>Nidhu Birthday Terminal ❤️</title>
 <style>
 *,*::before,*::after{box-sizing:border-box;}
 body{margin:0;font-family:"Courier New",monospace;background:#000;color:#00ff9f;overflow-x:hidden;overflow-y:auto;min-height:100vh;min-height:100dvh;}
@@ -62,9 +62,62 @@ body::before{content:"";position:fixed;inset:0;width:200%;height:200%;background
 @keyframes cgrfFloat{0%{opacity:0;transform:translateY(30px) scale(.7) rotate(var(--cr));}30%,70%{opacity:.55;transform:translateY(0) scale(1) rotate(var(--cr));}100%{opacity:0;transform:translateY(-30px) scale(.7) rotate(var(--cr));}}
 #celebClose{background:linear-gradient(135deg,#ff0080,#7928ca);color:#fff;border:none;padding:13px 36px;font-size:clamp(14px,4vw,17px);font-family:"Courier New",monospace;font-weight:bold;border-radius:10px;cursor:pointer;box-shadow:0 0 20px #ff008066;transition:transform .15s,box-shadow .2s;-webkit-tap-highlight-color:transparent;}
 #celebClose:hover{transform:scale(1.05);box-shadow:0 0 32px #ff0080aa;}
+/* ── Intro Screen ── */
+#introScreen{position:fixed;inset:0;z-index:500;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#000;transition:opacity .9s cubic-bezier(.22,1,.36,1),transform .9s cubic-bezier(.22,1,.36,1);}
+#introScreen.fade-out{opacity:0;transform:scale(1.04);pointer-events:none;}
+#introCanvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;}
+#introGraffiti{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:1;}
+.igrf{position:absolute;font-family:"Courier New",monospace;font-weight:900;pointer-events:none;user-select:none;opacity:0;animation:igrfFloat 5s ease-in-out infinite;}
+@keyframes igrfFloat{0%,100%{opacity:0;transform:translateY(22px) scale(.8) rotate(var(--ir));}40%,60%{opacity:.22;transform:translateY(0) scale(1) rotate(var(--ir));}}
+.intro-bg-glow{position:absolute;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,#ff008022 0%,#7928ca11 50%,transparent 70%);animation:introGlowPulse 3s ease-in-out infinite;pointer-events:none;z-index:1;}
+@keyframes introGlowPulse{0%,100%{transform:scale(1);opacity:.7}50%{transform:scale(1.25);opacity:1}}
+.intro-content{position:relative;z-index:2;text-align:center;padding:24px 16px;}
+.intro-tag{font-size:clamp(10px,3vw,13px);letter-spacing:4px;color:#7928ca;text-transform:uppercase;margin-bottom:14px;animation:introFadeUp 1s .3s both;}
+.intro-name{font-size:clamp(52px,18vw,108px);font-weight:900;font-family:"Courier New",monospace;background:linear-gradient(90deg,#ff79c6,#ff0080,#7928ca,#00ff9f,#ffd700,#ff79c6);background-size:300%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 3s linear infinite,introFadeUp 1s .1s both;filter:drop-shadow(0 0 24px #ff79c677);line-height:1.1;margin:0 0 6px;}
+.intro-heart{-webkit-text-fill-color:initial;font-size:.6em;vertical-align:middle;display:inline-block;animation:heartBeat 1.2s ease-in-out infinite;}
+@keyframes heartBeat{0%,100%{transform:scale(1)}14%{transform:scale(1.3)}28%{transform:scale(1)}42%{transform:scale(1.18)}70%{transform:scale(1)}}
+.intro-date{font-size:clamp(11px,3vw,15px);color:#ff79c677;letter-spacing:3px;margin-bottom:44px;animation:introFadeUp 1s .5s both;}
+.intro-btn-wrap{position:relative;display:inline-flex;align-items:center;justify-content:center;margin-bottom:30px;animation:introFadeUp 1s .7s both;padding:50px;}
+.intro-ring{position:absolute;inset:6px;border-radius:60px;border:1.5px solid #ff79c444;animation:introRingPulse 2.5s ease-in-out infinite;pointer-events:none;}
+.intro-ring:nth-child(2){inset:-8px;animation-delay:.55s;border-color:#7928ca44;}
+.intro-ring:nth-child(3){inset:-22px;animation-delay:1.1s;border-color:#ff008033;}
+@keyframes introRingPulse{0%,100%{opacity:.9;transform:scale(1)}50%{opacity:.25;transform:scale(1.05)}}
+#introBtn{position:relative;background:linear-gradient(135deg,#ff0080,#7928ca 50%,#ff79c6);color:#fff;border:none;padding:clamp(14px,4vw,19px) clamp(26px,7vw,52px);font-size:clamp(14px,4.2vw,20px);font-family:"Courier New",monospace;font-weight:bold;border-radius:50px;cursor:pointer;letter-spacing:.5px;box-shadow:0 0 36px #ff008077,0 0 70px #7928ca33;transition:transform .2s,box-shadow .2s;-webkit-tap-highlight-color:transparent;animation:introBtnPulse 2.5s ease-in-out infinite;white-space:nowrap;}
+@keyframes introBtnPulse{0%,100%{box-shadow:0 0 36px #ff008077,0 0 70px #7928ca33;}50%{box-shadow:0 0 60px #ff0080cc,0 0 110px #7928ca88,0 0 160px #ff79c622;}}
+#introBtn:hover{transform:scale(1.07);}
+#introBtn:active{transform:scale(.94);}
+.ibtn-icon{margin-right:10px;display:inline-block;animation:iconWiggle 1.8s ease-in-out infinite;}
+@keyframes iconWiggle{0%,100%{transform:rotate(-10deg) scale(1)}50%{transform:rotate(10deg) scale(1.25)}}
+.ibtn-arrow{margin-left:10px;display:inline-block;animation:arrowBounce 1s ease-in-out infinite;}
+@keyframes arrowBounce{0%,100%{transform:translateX(0)}50%{transform:translateX(8px)}}
+.intro-hint{font-size:clamp(9px,2.5vw,11px);color:#ffffff22;letter-spacing:3px;text-transform:uppercase;animation:introHintBlink 2s ease-in-out infinite,introFadeUp 1s 1.1s both;}
+@keyframes introFadeUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
+@keyframes introHintBlink{0%,100%{opacity:.22}50%{opacity:.55}}
 </style>
 </head>
 <body>
+<!-- Intro Surprise Screen -->
+<div id="introScreen">
+  <canvas id="introCanvas"></canvas>
+  <div id="introGraffiti"></div>
+  <div class="intro-bg-glow"></div>
+  <div class="intro-content">
+    <div class="intro-tag">✦ a birthday surprise for ✦</div>
+    <div class="intro-name">Nidhu<span class="intro-heart">❤️</span></div>
+    <div class="intro-date">24th April &nbsp;·&nbsp; Forever Yours ♾️</div>
+    <div class="intro-btn-wrap">
+      <div class="intro-ring"></div>
+      <div class="intro-ring"></div>
+      <div class="intro-ring"></div>
+      <button id="introBtn" onclick="startSurprise()">
+        <span class="ibtn-icon">🎁</span>
+        <span>Click to Know Your Surprise</span>
+        <span class="ibtn-arrow">→</span>
+      </button>
+    </div>
+    <div class="intro-hint">✦ tap to begin your story ✦</div>
+  </div>
+</div>
 <canvas id="particleCanvas"></canvas>
 <div id="graffiti"></div>
 <div class="page-wrap">
@@ -322,8 +375,51 @@ let touchStartX=0;
 document.addEventListener("touchstart",e=>{touchStartX=e.changedTouches[0].screenX;},{passive:true});
 document.addEventListener("touchend",e=>{const dx=e.changedTouches[0].screenX-touchStartX;if(Math.abs(dx)>50){dx<0?nextSlide():prevSlide();}},{passive:true});
 
-document.body.addEventListener("click",()=>{document.getElementById("bgMusic").play().catch(()=>{});},{once:true});
-renderSlide();
+/* ── Intro Screen Logic ── */
+const INTRO_WORDS=["❤️","💖","🎂","✨","🌸","🎁","💝","★","♥","love","happy","🥳","forever","🎊","yours","24th","💫","🔥","🌹","✦","Nidhu","🎈","💕","bday~"];
+const INTRO_COLS=["#ff79c6","#ff0080","#7928ca","#ffd700","#00ff9f","#ff4500","#00bfff","#ffffff"];
+function buildIntroGraffiti(){
+  const g=document.getElementById("introGraffiti");g.innerHTML="";
+  for(let i=0;i<28;i++){
+    const el=document.createElement("span");el.className="igrf";
+    el.textContent=INTRO_WORDS[i%INTRO_WORDS.length];
+    const sz=(Math.random()*30+12).toFixed(0);
+    const rot=((Math.random()-.5)*64).toFixed(1);
+    el.style.cssText=`font-size:${sz}px;top:${(Math.random()*92).toFixed(1)}%;left:${(Math.random()*90).toFixed(1)}%;color:${INTRO_COLS[i%INTRO_COLS.length]};--ir:${rot}deg;animation-delay:${(Math.random()*5).toFixed(2)}s;animation-duration:${(Math.random()*2+4).toFixed(2)}s;font-style:${Math.random()>.6?"italic":"normal"}`;
+    g.appendChild(el);
+  }
+}
+const iCanvas=document.getElementById("introCanvas");
+const ictx=iCanvas.getContext("2d");
+let iParticles=[],iAF;
+function resizeICanvas(){iCanvas.width=window.innerWidth;iCanvas.height=window.innerHeight;}
+resizeICanvas();
+window.addEventListener("resize",resizeICanvas);
+class IParticle{
+  constructor(){this.reset(true);}
+  reset(init){
+    const W=iCanvas.width,H=iCanvas.height;
+    this.x=Math.random()*W;this.y=init?Math.random()*H:H+12;
+    this.sz=Math.random()*13+5;this.a=Math.random()*.45+.08;
+    const pal=["#ff79c6","#ff0080","#ffd700","#7928ca","#ffffff","#00ff9f","#ff4ecd"];
+    this.col=pal[Math.floor(Math.random()*pal.length)];
+    const chs=["♥","❤","✦","✧","★","·","°","✨"];
+    this.ch=chs[Math.floor(Math.random()*chs.length)];
+    this.spd=Math.random()*.9+.3;this.vx=(Math.random()-.5)*.9;
+    this.wob=Math.random()*Math.PI*2;
+  }
+  update(){this.wob+=.03;this.x+=Math.sin(this.wob)*.8+this.vx*.2;this.y-=this.spd;if(this.y<-20)this.reset(false);}
+  draw(){ictx.save();ictx.globalAlpha=Math.max(0,this.a);ictx.fillStyle=this.col;ictx.font=`${this.sz*2}px Courier New`;ictx.fillText(this.ch,this.x,this.y);ictx.restore();}
+}
+function initIParticles(){const n=window.innerWidth<600?22:44;iParticles=Array.from({length:n},()=>new IParticle());}
+function animateIntro(){ictx.clearRect(0,0,iCanvas.width,iCanvas.height);iParticles.forEach(p=>{p.update();p.draw();});iAF=requestAnimationFrame(animateIntro);}
+function startSurprise(){
+  const intro=document.getElementById("introScreen");
+  intro.classList.add("fade-out");
+  document.getElementById("bgMusic").play().catch(()=>{});
+  setTimeout(()=>{intro.style.display="none";cancelAnimationFrame(iAF);renderSlide();},960);
+}
+buildIntroGraffiti();initIParticles();animateIntro();
 </script>
 </body>
 </html>
